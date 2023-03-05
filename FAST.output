@@ -1,0 +1,334 @@
+==================================================
+Survey: FAST_hrx_opt
+==================================================
+        precompute_for_fisher(): Loading matter P(k)...
+**************************************************
+           omega_M_0: 0.316
+      omega_lambda_0: 0.684
+           omega_b_0: 0.049
+          omega_HI_0: 0.000486
+               N_eff: 3.046
+                   h: 0.67
+                  ns: 0.962
+             sigma_8: 0.834
+               gamma: 0.55
+                  w0: -1.0
+                  wa: 0.0
+                 fNL: 0.0
+                 mnu: 0.0
+               k_piv: 0.05
+               aperp: 1.0
+                apar: 1.0
+                bHI0: 0.677
+                   A: 1.0
+            sigma_nl: 7.0
+                 b_1: 0.0
+             k0_bias: 0.1
+              gamma0: 0.55
+              gamma1: 0.0
+                eta0: 0.0
+                eta1: 0.0
+                A_xi: 0.0
+              logkmg: -1.3010299956639813
+         foregrounds: {'A': [57.0, 0.014, 700.0, 0.088], 'nx': [1.1, 1.0, 2.4, 3.0], 'mx': [-2.07, -2.1, -2.8, -2.15], 'l_p': 1000.0, 'nu_p': 130.0}
+            pk_nobao: <scipy.interpolate._interpolate.interp1d object at 0x7fc3db158630>
+                fbao: <scipy.interpolate._interpolate.interp1d object at 0x7fc3db1586d0>
+            k_in_max: 9.292297
+            k_in_min: 6.7e-05
+**************************************************
+                mode: dish
+               Ndish: 1
+               Nbeam: 19
+               Ddish: 300.0
+               Tinst: 20000.0
+       survey_dnutot: 400.0
+        survey_numax: 1360.0
+                 dnu: 1
+               Sarea: 6.092348395734974
+                ttot: 31554000000000.0
+             nu_line: 1420.406
+          epsilon_fg: 1e-06
+               k_nl0: 0.14
+                 use: {'f_rsd': True, 'f_growthfactor': True, 'alpha_all': True, 'alpha_volume': False, 'alpha_rsd_angle': False, 'alpha_rsd_shift': False, 'alpha_bao_shift': True, 'alpha_pk_shift': False}
+**************************************************
+>>>  0 working on redshift bin  0 -- z = 0.052
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.617e-03
+skpar     1.847
+skprp    19.100
+lmin      2.5
+lmax     4407.4
+signl    0.1429
+Vphys     0.0 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  1 -- z = 0.068
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.517e-03
+skpar     1.807
+skprp    14.495
+lmin      2.5
+lmax     4342.1
+signl    0.1429
+Vphys     0.0 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  2 -- z = 0.084
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.418e-03
+skpar     1.767
+skprp    11.561
+lmin      2.5
+lmax     4276.8
+signl    0.1429
+Vphys     0.1 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  3 -- z = 0.101
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.322e-03
+skpar     1.729
+skprp     9.531
+lmin      2.5
+lmax     4211.5
+signl    0.1429
+Vphys     0.1 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  4 -- z = 0.118
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.227e-03
+skpar     1.691
+skprp     8.045
+lmin      2.5
+lmax     4146.2
+signl    0.1429
+Vphys     0.1 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  5 -- z = 0.136
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.134e-03
+skpar     1.654
+skprp     6.911
+lmin      2.5
+lmax     4080.9
+signl    0.1429
+Vphys     0.2 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  6 -- z = 0.155
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       4.043e-03
+skpar     1.617
+skprp     6.017
+lmin      2.5
+lmax     4015.6
+signl    0.1429
+Vphys     0.2 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  7 -- z = 0.174
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.953e-03
+skpar     1.581
+skprp     5.296
+lmin      2.5
+lmax     3950.3
+signl    0.1429
+Vphys     0.3 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  8 -- z = 0.194
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.865e-03
+skpar     1.546
+skprp     4.702
+lmin      2.5
+lmax     3885.0
+signl    0.1429
+Vphys     0.3 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin  9 -- z = 0.214
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.779e-03
+skpar     1.512
+skprp     4.204
+lmin      2.5
+lmax     3819.7
+signl    0.1429
+Vphys     0.4 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 10 -- z = 0.235
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.694e-03
+skpar     1.478
+skprp     3.782
+lmin      2.5
+lmax     3754.4
+signl    0.1429
+Vphys     0.5 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 11 -- z = 0.257
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.611e-03
+skpar     1.445
+skprp     3.420
+lmin      2.5
+lmax     3689.1
+signl    0.1429
+Vphys     0.6 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 12 -- z = 0.280
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.530e-03
+skpar     1.412
+skprp     3.106
+lmin      2.5
+lmax     3623.8
+signl    0.1429
+Vphys     0.7 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 13 -- z = 0.303
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.451e-03
+skpar     1.380
+skprp     2.832
+lmin      2.5
+lmax     3558.5
+signl    0.1429
+Vphys     0.9 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 14 -- z = 0.328
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.373e-03
+skpar     1.349
+skprp     2.590
+lmin      2.5
+lmax     3493.2
+signl    0.1429
+Vphys     1.0 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 15 -- z = 0.353
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.297e-03
+skpar     1.319
+skprp     2.376
+lmin      2.5
+lmax     3427.9
+signl    0.1429
+Vphys     1.2 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 16 -- z = 0.379
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.222e-03
+skpar     1.289
+skprp     2.184
+lmin      2.5
+lmax     3362.6
+signl    0.1429
+Vphys     1.4 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 17 -- z = 0.406
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.149e-03
+skpar     1.260
+skprp     2.013
+lmin      2.5
+lmax     3297.2
+signl    0.1429
+Vphys     1.6 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 18 -- z = 0.435
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.078e-03
+skpar     1.231
+skprp     1.859
+lmin      2.5
+lmax     3231.9
+signl    0.1429
+Vphys     1.9 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+>>>  0 working on redshift bin 19 -- z = 0.464
+--------------------------------------------------
+kmin      1e-07
+kmax      1.0
+kfg       3.008e-03
+skpar     1.203
+skprp     1.719
+lmin      2.5
+lmax     3166.6
+signl    0.1429
+Vphys     2.2 Gpc^3
+RSD fn   kaiser
+--------------------------------------------------
+        Autocorrelation mode (dish)
+Finished.
