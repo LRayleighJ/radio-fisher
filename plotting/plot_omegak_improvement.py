@@ -18,8 +18,8 @@ nsig = 1.5 # No. of sigma to plot out to
 aspect = 1. #1.7 # Aspect ratio of range (w = aspect * h)
 
 #TYPE = 'omegak'
-#TYPE = 'gamma'
-TYPE = 'FOM'
+TYPE = 'gamma'
+#TYPE = 'FOM'
 
 if TYPE == 'omegak':
     param1 = "omegak"
@@ -42,8 +42,11 @@ MARGINALISE_INITIAL_PK = True # Marginalise over n_s, sigma_8
 MARGINALISE_OMEGAB = True # Marginalise over Omega_baryons
 MARGINALISE_W0WA = True # Marginalise over (w0, wa)
 
-names = ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper'] #, 'exptS']
-labels = ['DETF IV', 'Facility', 'Stage II'] #, 'Stage I']
+#names = ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper'] #, 'exptS']
+#labels = ['DETF IV', 'Facility', 'Stage II'] #, 'Stage I']
+names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper']
+labels = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['DETF IV + Planck', 'Facility + Planck']
+
 colours = ['#CC0000', '#1619A1', '#5B9C0A', '#FFB928']
 linestyle = [[2, 4, 6, 4], [], [8, 4], [3, 4]]
 
@@ -133,15 +136,15 @@ print("NOTE:", s4)
 # Axis ticks and labels
 ax.legend(prop={'size':'x-large'}, bbox_to_anchor=[0.96, 0.30], frameon=False)
 ax.tick_params(axis='both', which='major', labelsize=20, size=8., width=1.5, pad=8.)
-ax.set_xlim((0.0, 2.6))
+ax.set_xlim((0.0, 1.8))
 ax.set_xlabel("$z_\mathrm{max}$", fontdict={'fontsize':'xx-large'}, labelpad=15.)
 if param1 == 'fom':
     ax.set_ylabel("$\mathrm{FOM}$", fontdict={'fontsize':'xx-large'}, labelpad=15.)
-    ax.set_ylim((0., 430.))
+    ax.set_ylim((0., 30.))
 elif param1=='omegak':
     ax.set_ylabel("$[\sigma({%s})]^{-1}$" % label1, fontdict={'fontsize':'xx-large'}, 
                   labelpad=15.)
-    ax.set_ylim((0., 1250.))
+    ax.set_ylim((0., 300.))
 else:
     ax.set_ylabel("$[\sigma({%s})]^{-1}$" % label1, fontdict={'fontsize':'xx-large'}, 
                   labelpad=15.)

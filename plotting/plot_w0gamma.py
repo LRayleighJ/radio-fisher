@@ -37,7 +37,7 @@ colours = [ ['#1619A1', '#B1C9FD'],
 #--------------------------------------------------------------
 
 fig_name = "fig19-w0gamma.pdf"
-names = ['EuclidRef_paper', 'exptL_paper', 'exptL_paper']
+names = ["FAST_hrx_opt",]# ['EuclidRef_paper', 'exptL_paper', 'exptL_paper']
 labels = ['DETF IV + Planck', 'Facility + Planck', 'Combined + Planck']
 
 ADD_EUCLID = [False, False, True]

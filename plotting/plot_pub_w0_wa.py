@@ -17,7 +17,7 @@ import euclid
 cosmo = rf.experiments.cosmo
 
 #names = ["GBT", "BINGO", "WSRT", "APERTIF", "JVLA", "ASKAP", "KAT7", "MeerKAT", "SKA1mid", "SKA1MK", "iSKA1MK", "aSKA1MK", "SKA1MK_A0"]
-names = ["SKA1MK",] #["SKA1mid",] ["MeerKAT",]
+names = ["FAST_hrx_opt",] #["SKA1mid",] ["MeerKAT",]
 colours = ['#22AD1A', '#3399FF', '#ED7624']
 
 # Fiducial value and plotting

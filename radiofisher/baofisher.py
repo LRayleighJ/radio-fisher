@@ -2513,9 +2513,14 @@ def indices_for_param_names(paramnames, params, warn=True):
     idxs : list
         List of indices of parameters specified in 'params'
     """
+    #with open("/home/zerui603/work/bao21cm-master/warning.txt","a") as f114514:
+    #    print("indices_for_param_names is allocated once. ", file=f114514)
+    #    print("tail 1145141919")
     if type(params) is str: params = [params,] # Convert single param. string to list
     idxs = []
+    # print(params)
     for p in params:
+      # print(p)
       if p[-1] == "*":
         # Wildcard; match all params
         for i in range(len(paramnames)):

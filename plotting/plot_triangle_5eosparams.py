@@ -15,14 +15,18 @@ USE_DETF_PLANCK_PRIOR = True # If False, use Euclid prior instead
 
 cosmo = rf.experiments.cosmo
 
-names = ['EuclidRef_paper', 'exptL_paper']
-labels = ['DETF IV + Planck', 'Facility + Planck']
+
+names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper']
+labels = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['DETF IV + Planck', 'Facility + Planck']
 colours = [ ['#CC0000', '#F09B9B'],
             ['#1619A1', '#B1C9FD'],
             ['#6B6B6B', '#BDBDBD'],
             ['#5B9C0A', '#BAE484'],
             ['#FFB928', '#FFEA28'] ]
 
+
+
+            
 #names = ['EuclidRef', 'EuclidRef_BAOonly']
 #labels = ['Euclid (all)', 'Euclid (BAO only)']
 #names = ['EuclidRef_full', 'EuclidRef_fix', 'gSKA2_full', 'SKA1MIDfull2_full']
@@ -140,8 +144,8 @@ for k in _k:
                     sig1 = np.sqrt(cov_pl[p1,p1])
                     sig2 = np.sqrt(cov_pl[p2,p2])
                     ax.plot(x, y, 'kx')
-                    ax.set_xlim((x-nsigma*sig1, x+nsigma*sig1))
-                    ax.set_ylim((y-nsigma*sig2, y+nsigma*sig2))
+                    ax.set_xlim((x-2*nsigma*sig1, x+2*nsigma*sig1))
+                    ax.set_ylim((y-2*nsigma*sig2, y+2*nsigma*sig2))
             else:
                 sig = np.sqrt(cov_pl[p1,p1])
                 xx = np.linspace(x-20.*sig, x+20.*sig, 4000)
@@ -151,7 +155,7 @@ for k in _k:
                 
                 # Match x scale, and hide y ticks
                 if k == scale_idx:
-                    ax.set_xlim((x-nsigma*sig, x+nsigma*sig))
+                    ax.set_xlim((x-2*nsigma*sig, x+2*nsigma*sig))
                 ax.tick_params(axis='y', which='both', left='off', right='off')
             
             # Set position of subplot
@@ -174,8 +178,8 @@ P.gcf().legend((l for l in lines), (name for name in labels), prop={'size':'xx-l
 # Set every other label to be invisible
 # Decide to trim either even/odd labels for each plot on x/y-axis
 # -1: No labels, 0: Even labels, 1: Odd labels, 2: All labels
-row_step = [1, 0, 1, 0, 1, 0] # h, ode, ok, w0, wa, gamma
-col_step = [0, 1, 0, 0, 0, -1] # gamma, wa, w0, ok, ode, h
+row_step = [1, 0, 1, 0, 0, 0] # h, ode, ok, w0, wa, gamma
+col_step = [0, 0, 0, 0, 0, -1] # gamma, wa, w0, ok, ode, h
 
 for j in range(Nparam):
     for i in range(Nparam-j):

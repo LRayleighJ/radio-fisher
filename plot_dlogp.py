@@ -17,7 +17,7 @@ labels = ['DETF IV', 'Facility', 'Stage II', 'Stage I']
 linestyle = [[2, 4, 6, 4], [], [8, 4], [3, 4], [], [], [], []]
 
 
-names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'yCHIME_avglow_paper', 'EuclidRef_paper']
+names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']
 labels = names
 
 """

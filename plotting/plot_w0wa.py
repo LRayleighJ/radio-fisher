@@ -25,7 +25,7 @@ cosmo = rf.experiments.cosmo
 names = ['EuclidRef', 'cexptL', 'yCHIME'] #'iexptM'] #, 'exptS']
 labels = ['DETF IV + Planck', 'Facility + Planck', 'Pathfinder + Planck'] #, 'Snapshot']
 
-
+'''
 names = ['yCHIME', 'yCHIME_nocut',] #'iexptM'] #, 'exptS']
 labels = ['CHIME', 'CHIME Nocut',] #, 'Snapshot']
 
@@ -37,8 +37,9 @@ labels = ['Euclid', 'Euclid_nsfix', 'SKA2', 'SKA1-MID B2']
 
 names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'SKA1MID900_paper', 'EuclidRef_paper']
 labels = names
+'''
 
-names = ['FAST_hrx_opt']
+names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
 labels = names
 
 #names = ['EuclidRef', 'iexptO', 'cexptL', 'iexptM']
@@ -154,7 +155,7 @@ for k in _k:
     y = rf.experiments.cosmo['wa']
     
     # Plot contours for w0, wa; omega_k free
-    transp = [1., 0.85]
+    transp = [0.6, 0.3]
     w, h, ang, alpha = rf.ellipse_for_fisher_params(pw0, pwa, None, Finv=cov_pl)
     ellipses = [matplotlib.patches.Ellipse(xy=(x, y), width=alpha[kk]*w, 
                 height=alpha[kk]*h, angle=ang, fc=colours[k][kk], 
@@ -191,8 +192,9 @@ ax.set_xlabel(r"$w_0$", fontdict={'fontsize':'xx-large'}, labelpad=15.)
 ax.set_ylabel(r"$w_a$", fontdict={'fontsize':'xx-large'})
 
 
-ax.set_xlim((-1.75, -0.25))
-ax.set_ylim((-2.1, 2.1))
+ax.set_xlim((-2, 0))
+ax.set_ylim((-3, 3))
+ax.grid()
 '''
 if MARGINALISE_CURVATURE:
     ax.set_xlim((-1.25, -0.75))
@@ -209,7 +211,7 @@ else:
 
 # Set size and save
 P.tight_layout()
-P.gcf().set_size_inches(8.,6.)
+P.gcf().set_size_inches(8.,10.)
 P.savefig("test-w0wa.pdf", transparent=True)
 #P.savefig("mario-w0wa-SKAMID.pdf", transparent=True)
 #P.savefig("ska-w0wa.pdf", transparent=True)

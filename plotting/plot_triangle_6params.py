@@ -11,19 +11,19 @@ import matplotlib.ticker
 import os
 from radiofisher import euclid
 
-MARGINALISE_OVER_W0WA = False # Whether to fix or marginalise over (w0, wa)
+MARGINALISE_OVER_W0WA = True # Whether to fix or marginalise over (w0, wa)
 
 cosmo = rf.experiments.cosmo
 
 colours = [ ['#CC0000', '#F09B9B'],
             ['#1619A1', '#B1C9FD'] ]
-if MARGINALISE_OVER_W0WA:
+if not MARGINALISE_OVER_W0WA:
     names = ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper']
     labels = ['DETF IV + Planck', 'Facility + Planck', 'Stage II + Planck']
     colours.append(['#5B9C0A', '#BAE484']) # Green
 else:
-    names = ['EuclidRef_paper', 'exptL_paper', 'exptL_paper']
-    labels = ['DETF IV + Planck', 'Facility + Planck', 'Planck only'] 
+    names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper', 'exptL_paper']
+    labels = ['FAST','MeerKATb1','MeerKATb2']# ['DETF IV + Planck', 'Facility + Planck', 'Planck only'] 
     colours.append(['#6B6B6B', '#BDBDBD']) # Grey
 
 scale_idx = 1 # Index of experiment to use as reference for setting the x,y scales

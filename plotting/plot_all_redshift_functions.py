@@ -15,9 +15,9 @@ PLOT_DIFFERENT_MEASURES = False
 cosmo = rf.experiments.cosmo
 
 if not PLOT_DIFFERENT_MEASURES:
-    names = ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
+    names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
     colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C'] # DETF/F/M/S
-    labels = ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+    labels = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
     linestyle = [[2, 4, 6, 4], [], [8, 4], [3, 4], [1,1]]
 else:
     names = ['cexptL_bao', 'cexptL_bao_rsd', 'cexptL_bao_pkshift', 
@@ -115,8 +115,8 @@ for i in range(len(axes)):
     
     # Set axis limits
     #axes[i].set_xlim((0.25, 2.2))
-    axes[i].set_xlim((0., 2.43))
-    axes[i].set_ylim((0., ymax[i]))
+    axes[i].set_xlim((0., 1.5))
+    axes[i].set_ylim((0., 2*ymax[i]))
     
     # Add label to panel
     P.figtext(l0 + ww*j + 0.02, b0 + hh*(0.86+(i%2)), ax_lbls[i], 

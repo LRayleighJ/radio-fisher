@@ -53,6 +53,34 @@ SURVEY = {
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
     'use':              USE                # Which constraints to use/ignore
 }
+SURVEY_FAST = {
+    'ttot':             100000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+SURVEY_FASTWB = {
+    'ttot':             60000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+SURVEY_MEERKATB1 = {
+    'ttot':             4000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+SURVEY_MEERKATB2 = {
+    'ttot':             4000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
 
 # Add foreground components to cosmology dict.
 # (Extragal. ptsrc, extragal. free-free, gal. synch., gal. free-free)
@@ -436,11 +464,11 @@ FAST = {
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            20.*(1e3),         # System temp. [mK]
     'survey_dnutot':    400.,              # Total bandwidth of *entire* survey [MHz]
-    'survey_numax':     1360.,             # Max. freq. of survey ## zmin = 0.05
-    'dnu':              1,               # Bandwidth of single channel [MHz]
+    'survey_numax':     1420.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
     'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
     }
-FAST.update(SURVEY)
+FAST.update(SURVEY_FAST)
 
 KAT7 = {
     'mode':             'dish',            # Interferometer or single dish
@@ -464,11 +492,11 @@ MeerKATb1 = {
     'Tinst':            29.*(1e3),         # System temp. [mK]
     'survey_dnutot':    435.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1015.,             # Max. freq. of survey
-    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'dnu':              0.2,               # Bandwidth of single channel [MHz]
     'Sarea':            4e3*(D2RAD)**2.,  # Total survey area [radians^2]
     'n(x)': "array_config/nx_MKREF2_dec30.dat" # Interferometer antenna density
     }
-MeerKATb1.update(SURVEY)
+MeerKATb1.update(SURVEY_MEERKATB1)
 
 MeerKATb2 = {
     'mode':             'dish',            # Interferometer or single dish
@@ -478,11 +506,11 @@ MeerKATb2 = {
     'Tinst':            20.*(1e3),         # System temp. [mK]
     'survey_dnutot':    520.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1420.,             # Max. freq. of survey
-    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'dnu':              0.2,               # Bandwidth of single channel [MHz]
     'Sarea':            4e3*(D2RAD)**2.,   # Total survey area [radians^2]
     'n(x)': "array_config/nx_MKREF2_dec30.dat" # Interferometer antenna density
     }
-MeerKATb2.update(SURVEY)
+MeerKATb2.update(SURVEY_MEERKATB2)
 
 ASKAP = {
     'mode':             'dish',            # Interferometer or single dish
@@ -1211,3 +1239,15 @@ CVlimited_z2to5 = {
 }
 CVlimited_z2to5.update(SURVEY)
 
+FASTWB = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            1,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            60.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    780.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1050.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    }
+FASTWB.update(SURVEY_FASTWB)

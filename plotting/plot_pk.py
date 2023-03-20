@@ -13,7 +13,7 @@ import scipy.interpolate
 
 C = 3e5
 cosmo = rf.experiments.cosmo
-names = ["SKA1MID350_nokfg_paper",]
+names = ["FAST_hrx_opt",]
 colours = ['#1619A1', '#CC0000', '#5B9C0A', '#990A9C']
 
 # Get f_bao(k) function

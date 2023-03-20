@@ -9,7 +9,7 @@ from rfwrapper import rf
 cosmo = rf.experiments.cosmo
 
 fmroot = "fishermat"
-names = ['FAST_hrx_opt', ]
+names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt','FASTWB_hrx_opt']
 
 # Loop through experiments and output them
 _k = list(range(len(names)))

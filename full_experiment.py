@@ -10,6 +10,7 @@ from radiofisher import experiments
 from radiofisher.units import *
 from mpi4py import MPI
 import sys
+import matplotlib.pyplot as plt
 
 comm = MPI.COMM_WORLD
 myid = comm.Get_rank()
@@ -135,6 +136,7 @@ expt_list = [
     ( 'iCVTEST1',         e.CVlimited_z0to3), # 80
     ( 'iCVTEST2',         e.CVlimited_z2to5), # 81
     ( 'iHIRAX',           e.HIRAX),         # 82
+    ( 'FASTWB',           e.FASTWB),         # 83
 ]
 names, expts = list(zip(*expt_list))
 names = list(names); expts = list(expts)
@@ -186,6 +188,11 @@ zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=20.)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=60.)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=30.)
 #zs = rf.zbins_fixed(expt_zbins, dz=0.1)
+
+plt.figure()
+plt.scatter(range(len(zc)),zc)
+plt.savefig("testzc.png")
+plt.close()
 
 # Define kbins (used for output)
 kbins = np.logspace(np.log10(0.001), np.log10(50.), 91)
