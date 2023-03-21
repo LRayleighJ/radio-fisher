@@ -137,6 +137,12 @@ expt_list = [
     ( 'iCVTEST2',         e.CVlimited_z2to5), # 81
     ( 'iHIRAX',           e.HIRAX),         # 82
     ( 'FASTWB',           e.FASTWB),         # 83
+    ( 'FAST01',           e.FAST_01),         # 84
+    ( 'FAST02',           e.FAST_02),         # 85
+    ( 'FAST03',           e.FAST_03),         # 86
+    ( 'FAST05',           e.FAST_05),         # 87
+    ( 'FAST07',           e.FAST_07),         # 88
+    ( 'FASTWB20K',           e.FASTWB20K),         # 89
 ]
 names, expts = list(zip(*expt_list))
 names = list(names); expts = list(expts)

@@ -39,8 +39,8 @@ names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'SKA1MID900_paper', 'EuclidRef_pa
 labels = names
 '''
 
-names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
-labels = names
+names = ['FAST_hrx_opt','MeerKATb2_hrx_opt','MeerKATb1_hrx_opt','FAST01_hrx_opt','FAST02_hrx_opt','FAST03_hrx_opt','FAST05_hrx_opt']# ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
+labels = ['FAST_Lband','MeerKATb2','MeerKATb1','FAST_z=0.1','FAST_z=0.2','FAST_z=0.3','FAST_z=0.5']
 
 #names = ['EuclidRef', 'iexptO', 'cexptL', 'iexptM']
 #labels = ['DETF IV', 'Optimal', 'Facility', 'Pathfinder']
@@ -53,12 +53,14 @@ labels = names
 #names = ['cexptL_Sarea2k', 'cexptL_Sarea5k', 'cexptL_Sarea10k', 'cexptL_Sarea15k', 'cexptL_Sarea20k', 'cexptL_Sarea30k', 'cexptL_Sarea25k', 'cexptL_Sarea1k']
 
 colours = [ ['#CC0000', '#F09B9B'],
-            ['#1619A1', '#B1C9FD'],
             ['#5B9C0A', '#BAE484'],
+            ['#1619A1', '#B1C9FD'],
             ['#FFB928', '#FFEA28'],
-            ['#FFB928', '#FFEA28'],
-            ['#FFB928', '#FFEA28'],
-            ['#FFB928', '#FFEA28'], ]
+            ['#FFA500', '#FFE4B5'],
+            ['#FF4500', '#FFA07A'],
+            ['#8B4513', '#D2691E'],
+            ['#C0C0C0', '#D3D3D3'],
+            ]
 
 # Fiducial value and plotting
 fig = P.figure()

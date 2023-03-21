@@ -144,8 +144,8 @@ for k in _k:
                     sig1 = np.sqrt(cov_pl[p1,p1])
                     sig2 = np.sqrt(cov_pl[p2,p2])
                     ax.plot(x, y, 'kx')
-                    ax.set_xlim((x-2*nsigma*sig1, x+2*nsigma*sig1))
-                    ax.set_ylim((y-2*nsigma*sig2, y+2*nsigma*sig2))
+                    #ax.set_xlim((x-2*nsigma*sig1, x+2*nsigma*sig1))
+                    #ax.set_ylim((y-2*nsigma*sig2, y+2*nsigma*sig2))
             else:
                 sig = np.sqrt(cov_pl[p1,p1])
                 xx = np.linspace(x-20.*sig, x+20.*sig, 4000)
@@ -154,8 +154,8 @@ for k in _k:
                 ax.plot(xx, yy, ls='solid', color=colours[k][0], lw=1.5)
                 
                 # Match x scale, and hide y ticks
-                if k == scale_idx:
-                    ax.set_xlim((x-2*nsigma*sig, x+2*nsigma*sig))
+                #if k == scale_idx:
+                #    ax.set_xlim((x-2*nsigma*sig, x+2*nsigma*sig))
                 ax.tick_params(axis='y', which='both', left='off', right='off')
             
             # Set position of subplot

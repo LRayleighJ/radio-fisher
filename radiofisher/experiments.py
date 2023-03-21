@@ -60,8 +60,16 @@ SURVEY_FAST = {
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
     'use':              USE                # Which constraints to use/ignore
 }
+
+SURVEY_FAST_no_ttot = {
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+
 SURVEY_FASTWB = {
-    'ttot':             60000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'ttot':             82000*HRS_MHZ,      # Total integration time [MHz^-1]
     'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
     'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
@@ -463,8 +471,8 @@ FAST = {
     'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            20.*(1e3),         # System temp. [mK]
-    'survey_dnutot':    400.,              # Total bandwidth of *entire* survey [MHz]
-    'survey_numax':     1420.,             # Max. freq. of survey ## zmin = 0.05
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1350.,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
     'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
     }
@@ -1239,15 +1247,97 @@ CVlimited_z2to5 = {
 }
 CVlimited_z2to5.update(SURVEY)
 
+# Forecast for different FAST IM survey
+
 FASTWB = {
     'mode':             'dish',            # Interferometer or single dish
     'Ndish':            1,                 # No. of dishes
     'Nbeam':            1,                # No. of beams (for multi-pixel detectors)
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            60.*(1e3),         # System temp. [mK]
-    'survey_dnutot':    780.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1050.,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
     'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
     }
 FASTWB.update(SURVEY_FASTWB)
+FASTWB20K = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            1,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1050.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    }
+FASTWB20K.update(SURVEY_FASTWB)
+
+FAST_01 = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1290.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'ttot':             100000*HRS_MHZ,      # Total integration time [MHz^-1]
+    }
+FAST_01.update(SURVEY_FAST_no_ttot)
+
+FAST_02 = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1180.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'ttot':             92000*HRS_MHZ,      # Total integration time [MHz^-1]
+    }
+FAST_02.update(SURVEY_FAST_no_ttot)
+
+FAST_03 = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1090.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'ttot':             85000*HRS_MHZ,      # Total integration time [MHz^-1]
+    }
+FAST_03.update(SURVEY_FAST_no_ttot)
+FAST_05 = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     946.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'ttot':             74000*HRS_MHZ,      # Total integration time [MHz^-1]
+    }
+FAST_05.update(SURVEY_FAST_no_ttot)
+FAST_07 = {
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     835.,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'ttot':             65000*HRS_MHZ,      # Total integration time [MHz^-1]
+    }
+FAST_07.update(SURVEY_FAST_no_ttot)

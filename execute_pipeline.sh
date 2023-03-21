@@ -1,6 +1,6 @@
 #!/bin/bash
 
-a=(22 26 29 83)
+a=(83 89)
 for i in ${a[*]}       
 do 
    python /home/zerui603/work/bao21cm-master/full_experiment.py $i
