@@ -39,8 +39,11 @@ names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'SKA1MID900_paper', 'EuclidRef_pa
 labels = names
 '''
 
-names = ['FAST_hrx_opt','MeerKATb2_hrx_opt','MeerKATb1_hrx_opt','FAST01_hrx_opt','FAST02_hrx_opt','FAST03_hrx_opt','FAST05_hrx_opt']# ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
-labels = ['FAST_Lband','MeerKATb2','MeerKATb1','FAST_z=0.1','FAST_z=0.2','FAST_z=0.3','FAST_z=0.5']
+names = ["FAST_hrx_opt","FASThighz_hrx_opt_n_10","FASThighz_hrx_opt_n_5"]# ['FAST_hrx_opt','MeerKATb2_hrx_opt','MeerKATb1_hrx_opt',"FASThighz_hrx_opt"]# ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
+labels = ["FASTLband","FASThighz_hrx_opt_n_5"]# ['FAST_Lband','MeerKATb2','MeerKATb1','FAST 1010-1150MHz']
+
+#names = ["FASTWB20K_hrx_opt","FASTWB_hrx_opt"]#['FASTLB00_hrx_opt','FASTLB05_hrx_opt','FASTLB10_hrx_opt','FASTLB15_hrx_opt','FASTLB20_hrx_opt']
+#labels = ["FASTWB20K","FASTWB"]#['FASTLband,zmin=0.00','FASTLband,zmin=0.05','FASTLband,zmin=0.10','FASTLband,zmin=0.15','FASTLband,zmin=0.20']
 
 #names = ['EuclidRef', 'iexptO', 'cexptL', 'iexptM']
 #labels = ['DETF IV', 'Optimal', 'Facility', 'Pathfinder']

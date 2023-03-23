@@ -27,11 +27,13 @@ colours = [ ['#CC0000', '#F09B9B'],
             ['#FFB928', '#FFEA28'] ]
 
 # Define values for interferom./single-dish
-Ddish = 15.
+Ddish = 300.
+Ddish_meerkat=13.5
 Dmin = 15.
 Dmax = 1000.
 dnutot = 600. / 1420. # Dimensionless
-Sarea = 25e3 * (D2RAD)**2.
+Sarea = 20e3 * (D2RAD)**2.
+Sarea_meerkat = 4e3 * (D2RAD)**2.
 
 
 # Get r(z)
@@ -68,27 +70,40 @@ kperp_min_sd = 2.*np.pi / np.sqrt(r**2. * Sarea)
 kperp_max_sd = 2.*np.pi * Ddish / (r * l) # 16.*np.log(2.) / 1.22
 kperp_max_sd2 = np.sqrt(16.*np.log(2.)) * Ddish / (r * l)
 
+kperp_min_sd_m = 2.*np.pi / np.sqrt(r**2. * Sarea_meerkat)
+kperp_max_sd_m = 2.*np.pi * Ddish_meerkat / (r * l) # 16.*np.log(2.) / 1.22
+
 # Set-up plots
 fig = P.figure()
 ax2 = fig.add_subplot(211)
 ax = fig.add_subplot(212)
 
 # Interferom. transverse
+'''
 ax.plot(kperp_min_int, zz, lw=1.8, color='#1619A1')
 ax.plot(kperp_max_int, zz, lw=1.8, color='#1619A1')
 ax.fill_betweenx(zz, kperp_min_int, kperp_max_int, color='#B1C9FD', alpha=1.)
 
 ax.annotate("Int.", xy=(0.9, 0.8), xytext=(0., 0.), fontsize='xx-large', 
             textcoords='offset points', ha='center', va='center')
+'''
 
 # Single-dish transverse
 ax.plot(kperp_min_sd, zz, lw=1.8, color='#CC0000')
 ax.plot(kperp_max_sd, zz, lw=1.8, color='#CC0000', ls='dashed')
 #ax.plot(kperp_max_sd2, zz, lw=1.8, color='g')
-ax.fill_betweenx(zz, kperp_min_sd, kperp_max_sd, color='#F09B9B', alpha=0.7)
+ax.fill_betweenx(zz, kperp_min_sd, kperp_max_sd, color='#F09B9B', alpha=0.5)
 
-ax.annotate("SD", xy=(0.01, 0.8), xytext=(0., 0.), fontsize='xx-large', 
-            textcoords='offset points', ha='center', va='center')
+ax.annotate("FAST", xy=(0.2, 0.8), xytext=(0., 0.), fontsize='xx-large', 
+            textcoords='offset points', ha='center', va='center',color='#CC0000')
+#######meerkat
+ax.plot(kperp_min_sd_m, zz, lw=1.8, color='#4682B4')
+ax.plot(kperp_max_sd_m, zz, lw=1.8, color='#4682B4', ls='dashed')
+#ax.plot(kperp_max_sd2, zz, lw=1.8, color='g')
+ax.fill_betweenx(zz, kperp_min_sd_m, kperp_max_sd_m, color='#87CEFA', alpha=0.7)
+
+ax.annotate("MeerKAT", xy=(0.01, 0.8), xytext=(0., 0.), fontsize='xx-large', 
+            textcoords='offset points', ha='center', va='center',color='#4682B4')
 
 # Radial
 ##ax.plot(kpar_min, zz, lw=2.8, color='k', ls='dashed')

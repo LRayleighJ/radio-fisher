@@ -12,6 +12,13 @@ from mpi4py import MPI
 import sys
 import matplotlib.pyplot as plt
 
+#test
+
+def print_test(x):
+    with open("/home/zerui603/work/bao21cm-master/zoutput.txt","a") as f114514:
+        print(x, file=f114514)
+
+
 comm = MPI.COMM_WORLD
 myid = comm.Get_rank()
 size = comm.Get_size()
@@ -143,6 +150,13 @@ expt_list = [
     ( 'FAST05',           e.FAST_05),         # 87
     ( 'FAST07',           e.FAST_07),         # 88
     ( 'FASTWB20K',           e.FASTWB20K),         # 89
+    ( 'FASTLB00',           e.FASTLB00),         # 90
+    ( 'FASTLB05',           e.FASTLB05),         # 91
+    ( 'FASTLB10',           e.FASTLB10),         # 92
+    ( 'FASTLB15',           e.FASTLB15),         # 93
+    ( 'FASTLB20',           e.FASTLB20),         # 94
+    ( 'FASTwide',           e.FASTwide19Beam),         # 95
+    ( 'FASThighz',           e.FASThighZLband),         # 96
 ]
 names, expts = list(zip(*expt_list))
 names = list(names); expts = list(expts)
@@ -150,13 +164,23 @@ names = list(names); expts = list(expts)
 ################################################################################
 
 # Take command-line argument for which survey to calculate, or set manually
+Sarea = None
+dnu = None
 if len(sys.argv) > 1:
     k = int(sys.argv[1])
     try:
-        Sarea = float(sys.argv[2])
+        if sys.argv[2] == "s":
+            Sarea = float(sys.argv[3])
+        elif sys.argv[2] == "n":
+            dnu = float(sys.argv[3])
+        elif sys.argv[2] == "sn":
+            Sarea = float(sys.argv[3])
+            dnu = float(sys.argv[4])
     except:
         Sarea = None
+        dnu = None
         pass
+
 else:
     raise IndexError("Need to specify ID for experiment.")
 
@@ -178,27 +202,39 @@ if names[k][0] == "a": expts[k]['mode'] = "iaa"
 if names[k][0] == "h": expts[k]['mode'] = "hybrid"
 
 expt = expts[k]
+'''
 if Sarea is None:
     survey_name = names[k]
-    root = "output/" + survey_name
 else:
     expt['Sarea'] = Sarea * (D2RAD)**2.
     survey_name = names[k] + "_" + str(int(Sarea))
-    root = "output/" + survey_name
+'''
+if sys.argv[2]=="s":
+    survey_name = names[k]+"_s_"+str(int(Sarea))
+    expt['Sarea'] = Sarea * (D2RAD)**2.
+elif sys.argv[2]=="n":
+    survey_name = names[k]+"_n_"+str(int(dnu))
+elif sys.argv[2]=="sn":
+    survey_name = names[k]+"_sn_"+str(int(Sarea))+str(int(dnu))
+    expt['Sarea'] = Sarea * (D2RAD)**2.
+else:
+    survey_name = names[k]
+root = "output/" + survey_name
 
 # Define redshift bins
 expt_zbins = rf.overlapping_expts(expt)
 ###zs, zc = rf.zbins_equal_spaced(expt_zbins, dz=0.2)
-zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=20.)
+if dnu is None:
+    zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=20)
+else:
+    zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=dnu)
 #zs, zc = rf.zbins_const_dr(expt_zbins, cosmo, bins=14)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=60.)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=30.)
 #zs = rf.zbins_fixed(expt_zbins, dz=0.1)
 
-plt.figure()
-plt.scatter(range(len(zc)),zc)
-plt.savefig("testzc.png")
-plt.close()
+print_test(1420/(1+zc))
+
 
 # Define kbins (used for output)
 kbins = np.logspace(np.log10(0.001), np.log10(50.), 91)
@@ -284,7 +320,9 @@ print("*"*50)
 ################################################################################
 # Loop through redshift bins, assigning them to each process
 ################################################################################
-
+print_test(survey_name)
+print_test(zs.size)
+print_test(zs)
 for i in range(zs.size-1):
     if i % size != myid:
       continue

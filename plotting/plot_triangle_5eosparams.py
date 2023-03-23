@@ -16,8 +16,8 @@ USE_DETF_PLANCK_PRIOR = True # If False, use Euclid prior instead
 cosmo = rf.experiments.cosmo
 
 
-names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper']
-labels = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['DETF IV + Planck', 'Facility + Planck']
+names = ['FAST02_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt',"FAST_hrx_opt"]# ['EuclidRef_paper', 'exptL_paper']
+labels = ['FAST zmin=0.2','MeerKATb1','MeerKATb2',"FAST LBand"]# ['DETF IV + Planck', 'Facility + Planck']
 colours = [ ['#CC0000', '#F09B9B'],
             ['#1619A1', '#B1C9FD'],
             ['#6B6B6B', '#BDBDBD'],
@@ -36,7 +36,7 @@ scale_idx = 1 # Index of experiment to use as reference for setting the x,y scal
 nsigma = 4.1 # No. of sigma (of reference experiment 1D marginal) to plot out to
 
 # Set-up triangle plot
-Nparam = 6 # No. of parameters
+Nparam = 5 # No. of parameters
 fig = P.figure()
 axes = [[fig.add_subplot(Nparam, Nparam, (j+1) + i*Nparam) for i in range(j, Nparam)] for j in range(Nparam)]
 
@@ -94,8 +94,8 @@ for k in _k:
     params_lbls.append(lbls)
     
     # Set which parameters are going into the triangle plot
-    params = ['h', 'omegaDE', 'omegak', 'w0', 'wa', 'gamma'][::-1]
-    label = ["$h$", "$\Omega_\mathrm{DE}$", "$\Omega_K$", "$w_0$", "$w_a$", "$\gamma$"][::-1]
+    params = ['h', 'omegaDE', 'omegak', 'w0', 'wa'][::-1]
+    label = ["$h$", "$\Omega_\mathrm{DE}$", "$\Omega_K$", "$w_0$", "$w_a$"][::-1]
     
     fid = [ cosmo['h'], cosmo['omega_lambda_0'], 0., cosmo['w0'], cosmo['wa'], cosmo['gamma'] ][::-1]
     
@@ -131,7 +131,7 @@ for k in _k:
             # Plot ellipse *or* 1D
             if p1 != p2:
                 # Plot contours
-                _a = [1., 0.85] # Alpha for each contour
+                _a = [0.5, 0.3] # Alpha for each contour
                 ww, hh, ang, alpha = rf.ellipse_for_fisher_params(
                                                       p1, p2, None, Finv=cov_pl)
                 ellipses = [matplotlib.patches.Ellipse(xy=(x, y), width=alpha[kk]*ww, 

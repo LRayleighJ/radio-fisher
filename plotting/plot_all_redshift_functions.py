@@ -15,10 +15,10 @@ PLOT_DIFFERENT_MEASURES = False
 cosmo = rf.experiments.cosmo
 
 if not PLOT_DIFFERENT_MEASURES:
-    names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
-    colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C'] # DETF/F/M/S
-    labels = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
-    linestyle = [[2, 4, 6, 4], [], [8, 4], [3, 4], [1,1]]
+    names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt','FAST03_hrx_opt','FAST07_hrx_opt',"FASTWB_hrx_opt","FASTWB20K_hrx_opt"]# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
+    colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C',"#FF1493","#FF69B4","#DAA520","#BDB76B"] # DETF/F/M/S
+    labels = ['FAST Lband','MeerKATb1','MeerKATb2',"FAST zmin=0.3","FAST zmin=0.7","FAST wideband(60K)","FAST wideband(20K)"]# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+    linestyle = [[],[], [], [1,1], [1,1], [1,1],[1,1]]
 else:
     names = ['cexptL_bao', 'cexptL_bao_rsd', 'cexptL_bao_pkshift', 
              'cexptL_bao_vol', 'cexptL_bao_allap', 'cexptL_bao_all']
