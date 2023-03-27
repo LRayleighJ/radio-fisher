@@ -15,9 +15,9 @@ PLOT_DIFFERENT_MEASURES = False
 cosmo = rf.experiments.cosmo
 
 if not PLOT_DIFFERENT_MEASURES:
-    names = ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt','FAST03_hrx_opt','FAST07_hrx_opt',"FASTWB_hrx_opt","FASTWB20K_hrx_opt"]# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
+    names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
     colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C',"#FF1493","#FF69B4","#DAA520","#BDB76B"] # DETF/F/M/S
-    labels = ['FAST Lband','MeerKATb1','MeerKATb2',"FAST zmin=0.3","FAST zmin=0.7","FAST wideband(60K)","FAST wideband(20K)"]# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+    labels = ['FAST Lband','MeerKAT 11hrs','MeerKATb2',"FAST zmin=0.3","FAST zmin=0.7","FAST wideband(60K)","FAST wideband(20K)"]# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
     linestyle = [[],[], [], [1,1], [1,1], [1,1],[1,1]]
 else:
     names = ['cexptL_bao', 'cexptL_bao_rsd', 'cexptL_bao_pkshift', 
@@ -97,7 +97,7 @@ ax_lbls = ["$\sigma_{D_A}/D_A$", "$\sigma_A/A$", "$\sigma_H/H$",
 if PLOT_DIFFERENT_MEASURES:
     ymax = [0.18, 0.85, 0.11, 0.065]
 else:
-    ymax = [0.07, 0.85, 0.07, 0.05]
+    ymax = [1,2,1,1]# [0.07, 0.85, 0.07, 0.05]
 
 # Move subplots
 # pos = [[x0, y0], [x1, y1]]

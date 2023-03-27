@@ -157,6 +157,7 @@ expt_list = [
     ( 'FASTLB20',           e.FASTLB20),         # 94
     ( 'FASTwide',           e.FASTwide19Beam),         # 95
     ( 'FASThighz',           e.FASThighZLband),         # 96
+    ( 'MeerKAT10hrs',           e.MeerKAT10hrs),         # 97
 ]
 names, expts = list(zip(*expt_list))
 names = list(names); expts = list(expts)
@@ -209,15 +210,18 @@ else:
     expt['Sarea'] = Sarea * (D2RAD)**2.
     survey_name = names[k] + "_" + str(int(Sarea))
 '''
-if sys.argv[2]=="s":
-    survey_name = names[k]+"_s_"+str(int(Sarea))
-    expt['Sarea'] = Sarea * (D2RAD)**2.
-elif sys.argv[2]=="n":
-    survey_name = names[k]+"_n_"+str(int(dnu))
-elif sys.argv[2]=="sn":
-    survey_name = names[k]+"_sn_"+str(int(Sarea))+str(int(dnu))
-    expt['Sarea'] = Sarea * (D2RAD)**2.
-else:
+try:
+    if sys.argv[2]=="s":
+        survey_name = names[k]+"_s_"+str(int(Sarea))
+        expt['Sarea'] = Sarea * (D2RAD)**2.
+    elif sys.argv[2]=="n":
+        survey_name = names[k]+"_n_"+str(int(dnu))
+    elif sys.argv[2]=="sn":
+        survey_name = names[k]+"_sn_"+str(int(Sarea))+str(int(dnu))
+        expt['Sarea'] = Sarea * (D2RAD)**2.
+    else:
+        survey_name = names[k]
+except:
     survey_name = names[k]
 root = "output/" + survey_name
 

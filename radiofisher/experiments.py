@@ -90,6 +90,13 @@ SURVEY_MEERKATB2 = {
     'use':              USE                # Which constraints to use/ignore
 }
 
+SURVEY_MEERKAT10hrs = {
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+
 # Add foreground components to cosmology dict.
 # (Extragal. ptsrc, extragal. free-free, gal. synch., gal. free-free)
 foregrounds = {
@@ -1417,6 +1424,7 @@ FASTwide19Beam = {
 FASTwide19Beam.update(SURVEY_FAST)
 
 FASThighZLband = {
+    'ttot':             800*HRS_MHZ,      # Total integration time [MHz^-1]
     'mode':             'dish',            # Interferometer or single dish
     'Ndish':            1,                 # No. of dishes
     'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
@@ -1425,7 +1433,22 @@ FASThighZLband = {
     'survey_dnutot':    100.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1150,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
-    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'Sarea':            2e2*(D2RAD)**2.,  # Total survey area [radians^2]
     }
-FASThighZLband.update(SURVEY_FAST)
+FASThighZLband.update(SURVEY_FAST_no_ttot)
+
+MeerKAT10hrs= {
+    'ttot':             640*HRS_MHZ,      # Total integration time [MHz^-1]
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            64,                # No. of dishes
+    'Nbeam':            1,                 # No. of beams (for multi-pixel detectors)
+    'Ddish':            13.5,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    42.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1015.,             # Max. freq. of survey
+    'dnu':              0.2,               # Bandwidth of single channel [MHz]
+    'Sarea':            2e2*(D2RAD)**2.,  # Total survey area [radians^2]
+    'n(x)': "array_config/nx_MKREF2_dec30.dat" # Interferometer antenna density
+    }
+MeerKAT10hrs.update(SURVEY_MEERKAT10hrs)
 
