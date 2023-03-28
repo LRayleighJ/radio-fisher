@@ -413,6 +413,8 @@ TIANLAI = {
     'mode':             'cylinder',        # Interferometer or single dish
     'Ndish':            8*256,             # No. of dishes
     'Nbeam':            1,                 # No. of beams (for multi-pixel detectors)
+    'Ncyl':             8,                 # No. cylinders
+    'cyl_area':         15.*120.,           # Single dish area [m^2]
     'Ddish':            15.,               # Single dish diameter [m]
     'Tinst':            50.*(1e3),         # System temp. [mK]
     'survey_dnutot':    400.,              # Total bandwidth of *entire* survey [MHz]
@@ -429,6 +431,8 @@ TIANLAIband2 = {
     'mode':             'cylinder',        # Interferometer or single dish
     'Ndish':            8*256,             # No. of dishes
     'Nbeam':            1,                 # No. of beams (for multi-pixel detectors)
+    'Ncyl':             8,                 # No. cylinders
+    'cyl_area':         15.*120.,           # Single dish area [m^2]
     'Ddish':            15.,               # Single dish diameter [m]
     'Tinst':            50.*(1e3),         # System temp. [mK]
     'survey_dnutot':    400.,              # Total bandwidth of *entire* survey [MHz]
@@ -445,6 +449,8 @@ TIANLAIpath = {
     'mode':             'cylinder',        # Interferometer or single dish
     'Ndish':            3*32,              # No. of dishes
     'Nbeam':            1,                 # No. of beams (for multi-pixel detectors)
+    'Ncyl':             3,                 # No. cylinders
+    'cyl_area':         15.*40.,           # Single dish area [m^2]
     'Ddish':            15.,               # Single dish diameter [m]
     'Tinst':            50.*(1e3),         # System temp. [mK]
     'survey_dnutot':    100.,              # Total bandwidth of *entire* survey [MHz]

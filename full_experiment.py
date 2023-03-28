@@ -297,7 +297,7 @@ if myid == 0:
     _dA = r(zc) / (1. + np.array(zc))
     _D = D(zc)
     _f = f(zc)
-    np.savetxt(root+"-cosmofns-zc.dat", np.column_stack((zc, _H, _dA, _D, _f)))
+    np.savetxt(root+"-cosmofns-zc.dat", np.column_stack((zc, _H, _dA, _D, _f)),fmt='%.64f')
     
     # Calculate cosmo fns. as smooth fns. of z and save
     zz = np.linspace(0., 1.05*np.max(zc), 1000)
@@ -305,7 +305,7 @@ if myid == 0:
     _dA = r(zz) / (1. + zz)
     _D = D(zz)
     _f = f(zz)
-    np.savetxt(root+"-cosmofns-smooth.dat", np.column_stack((zz, _H, _dA, _D, _f)) )
+    np.savetxt(root+"-cosmofns-smooth.dat", np.column_stack((zz, _H, _dA, _D, _f)),fmt='%.64f' )
 
 # Precompute derivs for all processes
 eos_derivs = rf.eos_fisher_matrix_derivs(cosmo, cosmo_fns, fsigma8=True)
@@ -369,14 +369,14 @@ for i in range(zs.size-1):
     F_eos[:,8] *= 1. / H(zc[i]) * 100.
     
     # Save Fisher matrix and k bins
-    np.savetxt(root+"-fisher-full-%d.dat" % i, F_eos, header=" ".join(paramnames))
-    if myid == 0: np.savetxt(root+"-fisher-kc.dat", kc)
+    np.savetxt(root+"-fisher-full-%d.dat" % i, F_eos, header=" ".join(paramnames),fmt='%.64f')
+    if myid == 0: np.savetxt(root+"-fisher-kc.dat", kc,fmt='%.64f')
     
     # Save P(k) rebinning info
-    np.savetxt(root+"-rebin-Fbase-%d.dat" % i, np.array(binning_info['F_base']) )
-    np.savetxt(root+"-rebin-cumul-%d.dat" % i, np.array(binning_info['cumul']) )
-    np.savetxt(root+"-rebin-kgrid-%d.dat" % i, np.array(binning_info['kgrid']) )
-    np.savetxt(root+"-rebin-Vfac-%d.dat" % i, np.array([binning_info['Vfac'],]) )
+    np.savetxt(root+"-rebin-Fbase-%d.dat" % i, np.array(binning_info['F_base']) ,fmt='%.64f')
+    np.savetxt(root+"-rebin-cumul-%d.dat" % i, np.array(binning_info['cumul']),fmt='%.64f' )
+    np.savetxt(root+"-rebin-kgrid-%d.dat" % i, np.array(binning_info['kgrid']),fmt='%.64f' )
+    np.savetxt(root+"-rebin-Vfac-%d.dat" % i, np.array([binning_info['Vfac'],]),fmt='%.64f' )
 
 comm.barrier()
 if myid == 0: print("Finished.")

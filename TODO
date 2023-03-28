@@ -4,3 +4,8 @@
  * Get code to cache results of CAMB calculations
  * Why doesn't using Combined mode result in better constraints on M_nu? What does the Fisher integrand look like at high k?
  * Make it so that the user specifies the list of parameters that should be returned, rather than hard-coding them.
+
+* Zerui
+1. iMeerKAT的参数和Tianlai的参数，把干涉仪的数据加进去
+2. De宇宙学函数随红移变化code的BUG
+3. galaxy survey的数据应该怎么用

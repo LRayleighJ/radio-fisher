@@ -413,7 +413,7 @@ def zbins_split_width(expt, dz=(0.1, 0.3), zsplit=2.):
     dz : tuple (length 2)
         Widths of redshift bins before and after the split redshift.
     
-    zsplit : float
+    zsplit : np.float64
         Redshift at which to change from the first bin width to the second.
     """
     
@@ -509,7 +509,7 @@ def overlapping_expts(expt_in, zlow=None, zhigh=None, Sarea=None):
     if nu_low < 0.9999*nu2[0] or nu_high > 1.0001*nu2[1]: N2 = 0
     assert(N1 + N2 != 0)
     
-    f1 = N1 / float(N1 + N2)
+    f1 = N1 / np.float64(N1 + N2)
     f2 = 1. - f1
     
     # Calculate effective parameters
@@ -615,7 +615,7 @@ def fgrowth(cosmo, z, usegamma=False):
     cosmo : dict
         Standard cosmological parameter dictionary.
     
-    z : array_like of floats
+    z : array_like of np.float64s
         Redshifts.
         
     usegamma : bool, optional
@@ -990,21 +990,21 @@ def deriv_neutrinos(cosmo, cacheroot, kmax=CAMB_KMAX, force=False,
         Filename root. Three cache files will be produced, with this string at 
         the beginning of their names, followed by numbered suffixes.
     
-    kmax : float, optional
+    kmax : np.float64, optional
         Max. k value that CAMB should calculate
     
     force : bool, optional (default: False)
         If a cache file already exists, whether to force the calculation to be 
         re-done.
     
-    mnu : float, optional
+    mnu : np.float64, optional
         Fiducial neutrino mass, in eV. If this is non-zero, the derivative of 
         log(P(k)) with respect to neutrino mass will be returned.
     
-    dmnu : float, optional (default: 0.01)
+    dmnu : np.float64, optional (default: 0.01)
         Finite difference for neutrino derivative (in eV).
     
-    Neff : float, optional (default: 3.046)
+    Neff : np.float64, optional (default: 3.046)
         The fiducial effective no. of neutrino species, N_eff, to use. If mnu is 
         set to zero, the derivative with respect to Neff will be returned, 
         assuming no massive species.
@@ -1012,7 +1012,7 @@ def deriv_neutrinos(cosmo, cacheroot, kmax=CAMB_KMAX, force=False,
         Otherwise, it will be assumed that there is one massive species, and 
         (Neff - 1) massless species.
     
-    dNeff : float, optional (default: 0.1)
+    dNeff : np.float64, optional (default: 0.1)
         Finite difference for Neff derivative.
     
     Returns
@@ -1556,9 +1556,9 @@ def Cnoise(q, y, cosmo, expt, cv=False):
                 if (nu >= numin2 and nu <= numax2):
                     # Full overlap (just average theta_b here)
                     Ndish_comb = Nd1 + Nd2
-                    theta_b_comb = (Nd1*theta_b + Nd2*theta_b2) / float(Ndish_comb)
+                    theta_b_comb = (Nd1*theta_b + Nd2*theta_b2) / np.float64(Ndish_comb)
                     avg_AoverT = ((Nd1 * Aeff / Tsys) + (Nd2 * Aeff2 / Tsys2)) \
-                                 / float(Ndish_comb)
+                                 / np.float64(Ndish_comb)
                 else:
                     # Only array 1
                     Ndish_comb = Nd1
@@ -1577,7 +1577,7 @@ def Cnoise(q, y, cosmo, expt, cv=False):
             noise *= l**4. / (avg_AoverT**2. * theta_b_comb**4.)
             
             # Replace previous 1-array values with new 2-array values
-            noise *= (expt['Ndish'] / float(Ndish_comb)) / Tsys**2.
+            noise *= (expt['Ndish'] / np.float64(Ndish_comb)) / Tsys**2.
         else:
             # Standard dish autocorrelation mode
             print("(dish)")
@@ -2249,6 +2249,8 @@ def combined_fisher_matrix(F_list, names, exclude=[], expand=[]):
     Nparams = F_list[0].shape[0]
     
     # Get indices for parameters that will be excluded/expanded
+    #print("exclude:",exclude)
+    #print("expand:",expand)
     exclude = indices_for_param_names(names, exclude)
     expand = indices_for_param_names(names, expand)
     
@@ -2338,7 +2340,7 @@ def transform_to_lss_distances(z, F, paramnames, cosmo_fns=None, DA=None, H=None
     Parameters
     ----------
     
-    z : float
+    z : np.float64
         Redshift of the current bin
     
     F : array_like
@@ -2351,11 +2353,11 @@ def transform_to_lss_distances(z, F, paramnames, cosmo_fns=None, DA=None, H=None
         Functions for H(z), r(z), D(z), f(z). If specified, these are used to 
         calculate H(z) and D_A(z).
     
-    DA, H : float, optional
+    DA, H : np.float64, optional
         Values of H(z) and D_A(z) at the current redshift. These will be used 
         if cosmo_fns != specified.
     
-    rescale_da, rescale_h : float, optional
+    rescale_da, rescale_h : np.float64, optional
         Scaling factors for H and D_A in the original Fisher matrix.
     
     Returns
@@ -2406,7 +2408,7 @@ def expand_fisher_matrix(z, derivs, F, names, exclude=[], fsigma8=False):
     
     Parameters
     ----------
-    z : float
+    z : np.float64
         Central redshift of the survey.
     
     derivs : 2D list of interp. fns.
@@ -2559,7 +2561,7 @@ def fisher( zmin, zmax, cosmo, expt, cosmo_fns, return_pk=False, kbins=None,
     Parameters
     ----------
     
-    zmin, zmax : float
+    zmin, zmax : np.float64
         Redshift window of survey
     
     cosmo : dict

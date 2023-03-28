@@ -12,9 +12,9 @@ from radiofisher import euclid
 
 cosmo = rf.experiments.cosmo
 
-names = ["EuclidRef_paper", "exptL_paper", "aexptM_paper", "exptS_paper"]
-colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C'] # DETF/F/M/S
-labels = ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ["FAST_hrx_opt","MeerKATb1_hrx_opt","MeerKATb2_hrx_opt","yTIANLAI_hrx_opt"]
+colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C',"#FF1493","#FF69B4","#DAA520","#BDB76B"] # DETF/F/M/S
+labels = ['FAST 1050-1150MHz','MeerKAT 11hrs','MeerKAT Lband','Tianlai']# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
 
 # Get f_bao(k) function
 cosmo_fns = rf.background_evolution_splines(cosmo)
@@ -57,8 +57,10 @@ for k in range(len(names)):
     # Fix for PDF
     yup[np.where(yup > 1e1)] = 1e1
     ydn[np.where(ydn > 1e1)] = 1e1
-    axes[k].errorbar( kc, fbao(kc), yerr=[ydn, yup], color=colours[k], ls='none', 
-                      lw=1.8, capthick=1.8, label=names[k], ms='.' )
+    
+    
+    axes[k].errorbar( kc, fbao(kc), yerr=[ydn, yup], color=colours[k], ls='none', lw=1.8, capthick=1.8, label=names[k] )
+
 
     # Plot f_bao(k)
     kk = np.logspace(-3., 1., 2000)

@@ -21,6 +21,10 @@ names = ["gSKA2", ]
 colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C'] # DETF/F/M/S
 labels = ['Full SKA (galaxy survey)', ]
 
+names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ["FAST_hrx_opt","MeerKATb1_hrx_opt","MeerKATb2_hrx_opt","yTIANLAI_hrx_opt"]
+colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C',"#FF1493","#FF69B4","#DAA520","#BDB76B"] # DETF/F/M/S
+labels = ['FAST 1050-1150MHz','MeerKAT 11hrs','MeerKAT Lband','Tianlai']# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+
 # Get f_bao(k) function
 cosmo_fns = rf.background_evolution_splines(cosmo)
 cosmo = rf.load_power_spectrum(cosmo, "cache_pk.dat", force_load=True)

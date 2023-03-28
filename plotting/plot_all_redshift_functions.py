@@ -15,10 +15,10 @@ PLOT_DIFFERENT_MEASURES = False
 cosmo = rf.experiments.cosmo
 
 if not PLOT_DIFFERENT_MEASURES:
-    names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ['EuclidRef_paper', 'exptL_paper', 'aexptM_paper', 'exptS_paper']
+    names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ["FAST_hrx_opt","MeerKATb1_hrx_opt","MeerKATb2_hrx_opt","yTIANLAI_hrx_opt"]
     colours = ['#CC0000', '#1619A1', '#5B9C0A', '#990A9C',"#FF1493","#FF69B4","#DAA520","#BDB76B"] # DETF/F/M/S
-    labels = ['FAST Lband','MeerKAT 11hrs','MeerKATb2',"FAST zmin=0.3","FAST zmin=0.7","FAST wideband(60K)","FAST wideband(20K)"]# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
-    linestyle = [[],[], [], [1,1], [1,1], [1,1],[1,1]]
+    labels = ['FAST 1050-1150MHz','MeerKAT 11hrs','MeerKAT Lband','Tianlai']# ['DETF IV', 'Facility', 'Stage II', 'Stage I']
+    linestyle = [[],[], [], [],[1,1], [1,1], [1,1],[1,1]]
 else:
     names = ['cexptL_bao', 'cexptL_bao_rsd', 'cexptL_bao_pkshift', 
              'cexptL_bao_vol', 'cexptL_bao_allap', 'cexptL_bao_all']
@@ -36,6 +36,8 @@ axes = [fig.add_subplot(221), fig.add_subplot(222), fig.add_subplot(223),
         fig.add_subplot(224)]
 
 for k in range(len(names)):
+
+    print(names[k])
     root = "output/" + names[k]
 
     # Load cosmo fns.
@@ -61,9 +63,11 @@ for k in range(len(names)):
     #        'gamma', 'N_eff', 'pk*', 'f', 'b_HI', 'aperp', 'apar', 'fs8', 'bs8']
     F, lbls = rf.combined_fisher_matrix( F_list, expand=zfns, names=pnames,
                                          exclude=excl )
+    
+    
     cov = np.linalg.inv(F)
-    errs = np.sqrt(np.diag(cov))
-    print(lbls)
+    errs = np.sqrt(np.diag(np.abs(cov)))
+    # print(lbls)
     
     # Identify functions of z
     pA = rf.indices_for_param_names(lbls, 'A*')
@@ -74,6 +78,7 @@ for k in range(len(names)):
     
     indexes = [pDA, pA, pH, pf]
     fn_vals = [dAc/1e3, 1., Hc/1e2, cosmo['sigma_8']*fc*Dc]
+    #print(cosmo['sigma_8']*fc*Dc)
     #fn_vals = [dAc/1e3, 1., Hc/1e2, fc]
     
     # Output data
@@ -84,6 +89,7 @@ for k in range(len(names)):
     
     # Plot errors as fn. of redshift
     for jj in range(len(axes)):
+        print("jj:",jj,errs[indexes[jj]])
         err = errs[indexes[jj]] / fn_vals[jj]
         
         line = axes[jj].plot( zc, err, color=colours[k], lw=1.8, marker='o', 
@@ -92,12 +98,12 @@ for k in range(len(names)):
     
 # Subplot labels
 ax_lbls = ["$\sigma_{D_A}/D_A$", "$\sigma_A/A$", "$\sigma_H/H$", 
-           "$\sigma_{f\sigma_8}/f\sigma_8$"]
+           "$\sigma_{f\sigma_8}/f\sigma_8$(Overflow, unknown bug)"]
 
 if PLOT_DIFFERENT_MEASURES:
     ymax = [0.18, 0.85, 0.11, 0.065]
 else:
-    ymax = [1,2,1,1]# [0.07, 0.85, 0.07, 0.05]
+    ymax = [0.7, 4, 0.7, 2.55]# [0.07, 0.85, 0.07, 0.55]
 
 # Move subplots
 # pos = [[x0, y0], [x1, y1]]
@@ -115,7 +121,7 @@ for i in range(len(axes)):
     
     # Set axis limits
     #axes[i].set_xlim((0.25, 2.2))
-    axes[i].set_xlim((0., 1.5))
+    axes[i].set_xlim((0.2, 0.5))
     axes[i].set_ylim((0., 2*ymax[i]))
     
     # Add label to panel

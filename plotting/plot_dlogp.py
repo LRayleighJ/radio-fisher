@@ -18,8 +18,8 @@ linestyle = [[2, 4, 6, 4], [], [8, 4], [3, 4], [], [], [], []]
 
 
 # names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'yCHIME_avglow_paper', 'EuclidRef_paper']
-names = ['MeerKATb1_hrx_opt','FAST_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
-labels = names
+names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]#['MeerKATb1_hrx_opt','FAST_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
+labels = ['FAST 1050-1150MHz','MeerKAT 11hrs','MeerKAT Lband','Tianlai']
 
 """
 #names = ['EuclidRef', 'cexptLx', 'cexptLy', 'iexptOpt']
@@ -119,8 +119,8 @@ for k in range(len(names)):
 
 P.xscale('log')
 P.yscale('log')
-P.xlim((1.3e-3, 1.2e0))
-P.ylim((9e-4, 1e1))
+P.xlim((1.e-2, 0.5e0))
+P.ylim((5e-2, 1e1))
 P.legend(loc='lower left', prop={'size':'large'}, frameon=False)
 
 P.tick_params(axis='both', which='major', labelsize=20, size=8., width=1.5, pad=8.)
