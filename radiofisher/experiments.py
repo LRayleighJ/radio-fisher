@@ -1436,12 +1436,26 @@ FASThighZLband = {
     'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            20.*(1e3),         # System temp. [mK]
-    'survey_dnutot':    100.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_dnutot':    150.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1150,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
     'Sarea':            2e2*(D2RAD)**2.,  # Total survey area [radians^2]
     }
 FASThighZLband.update(SURVEY_FAST_no_ttot)
+
+FASThighZLbandshift = {
+    'ttot':             800*HRS_MHZ,      # Total integration time [MHz^-1]
+    'mode':             'dish',            # Interferometer or single dish
+    'Ndish':            1,                 # No. of dishes
+    'Nbeam':            19,                # No. of beams (for multi-pixel detectors)
+    'Ddish':            300.,              # Single dish diameter [m]
+    'Tinst':            20.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    100.,              # Total bandwidth of *entire* survey [MHz]
+    'survey_numax':     1050,             # Max. freq. of survey ## zmin = 0.05
+    'dnu':              0.1,               # Bandwidth of single channel [MHz]
+    'Sarea':            2e2*(D2RAD)**2.,  # Total survey area [radians^2]
+    }
+FASThighZLbandshift.update(SURVEY_FAST_no_ttot)
 
 MeerKAT10hrs= {
     'ttot':             640*HRS_MHZ,      # Total integration time [MHz^-1]

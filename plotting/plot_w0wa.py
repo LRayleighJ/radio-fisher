@@ -39,8 +39,8 @@ names = ['yCHIME_paper', 'yCHIME_nocut_paper', 'SKA1MID900_paper', 'EuclidRef_pa
 labels = names
 '''
 
-names = ["FASThighz_hrx_opt_n_5","MeerKAT10hrs_hrx_opt_n_5"]# ['FAST_hrx_opt','MeerKATb2_hrx_opt','MeerKATb1_hrx_opt',"FASThighz_hrx_opt"]# ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
-labels = ["FASTLband","Meerkat11hrs"]# ['FAST_Lband','MeerKATb2','MeerKATb1','FAST 1010-1150MHz']
+names = ['MeerKATb2_hrx_opt','MeerKATb1_hrx_opt','FAST03_hrx_opt']# ['FAST_hrx_opt','MeerKATb1_hrx_opt','MeerKATb2_hrx_opt']#,'FASTWB_hrx_opt']
+labels = ["MeerKAT band2","MeerKAT band1","FAST"]# ['FAST_Lband','MeerKATb2','MeerKATb1','FAST 1010-1150MHz']
 
 #names = ["FASTWB20K_hrx_opt","FASTWB_hrx_opt"]#['FASTLB00_hrx_opt','FASTLB05_hrx_opt','FASTLB10_hrx_opt','FASTLB15_hrx_opt','FASTLB20_hrx_opt']
 #labels = ["FASTWB20K","FASTWB"]#['FASTLband,zmin=0.00','FASTLband,zmin=0.05','FASTLband,zmin=0.10','FASTLband,zmin=0.15','FASTLband,zmin=0.20']
@@ -55,9 +55,9 @@ labels = ["FASTLband","Meerkat11hrs"]# ['FAST_Lband','MeerKATb2','MeerKATb1','FA
 #labels = ['DETF IV', 'DETF IV L', 'DETF IV L2'] #, 'Snapshot']
 #names = ['cexptL_Sarea2k', 'cexptL_Sarea5k', 'cexptL_Sarea10k', 'cexptL_Sarea15k', 'cexptL_Sarea20k', 'cexptL_Sarea30k', 'cexptL_Sarea25k', 'cexptL_Sarea1k']
 
-colours = [ ['#CC0000', '#F09B9B'],
-            ['#5B9C0A', '#BAE484'],
+colours = [ ['#5B9C0A', '#BAE484'],
             ['#1619A1', '#B1C9FD'],
+            ['#CC0000', '#F09B9B'],
             ['#FFB928', '#FFEA28'],
             ['#FFA500', '#FFE4B5'],
             ['#FF4500', '#FFA07A'],
@@ -197,8 +197,8 @@ ax.set_xlabel(r"$w_0$", fontdict={'fontsize':'xx-large'}, labelpad=15.)
 ax.set_ylabel(r"$w_a$", fontdict={'fontsize':'xx-large'})
 
 
-ax.set_xlim((-19, 17))
-ax.set_ylim((-20, 20))
+ax.set_xlim((-2, 0))
+ax.set_ylim((-2, 2))
 ax.grid()
 '''
 if MARGINALISE_CURVATURE:
