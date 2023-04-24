@@ -217,7 +217,7 @@ except:
 # Define redshift bins
 expt_zbins = rf.overlapping_expts(expt)
 ###zs, zc = rf.zbins_equal_spaced(expt_zbins, dz=0.2)
-zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=20.)
+zs, zc =  rf.zbins_const_dnu(expt_zbins, cosmo, dnu=10.)
 #zs, zc = rf.zbins_const_dr(expt_zbins, cosmo, bins=14)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=60.)
 #zs, zc = rf.zbins_const_dnu(expt_zbins, cosmo, dnu=30.)

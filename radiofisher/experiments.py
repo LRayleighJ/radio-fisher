@@ -54,7 +54,7 @@ SURVEY = {
     'use':              USE                # Which constraints to use/ignore
 }
 SURVEY_FAST = {
-    'ttot':             100000*HRS_MHZ,      # Total integration time [MHz^-1]
+    'ttot':             10*240*24*HRS_MHZ,      # Total integration time [MHz^-1]
     'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
     'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
@@ -62,6 +62,13 @@ SURVEY_FAST = {
 }
 
 SURVEY_FAST_no_ttot = {
+    'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
+    'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
+    'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
+    'use':              USE                # Which constraints to use/ignore
+}
+
+SURVEY_no_ttot = {
     'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
     'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
@@ -284,15 +291,16 @@ JVLA.update(SURVEY)
 BINGO = {
     'mode':             'dish',            # Interferometer or single dish
     'Ndish':            1,                 # No. of dishes
-    'Nbeam':            50,                # No. of beams (for multi-pixel detectors)
+    'Nbeam':            30*28,                # No. of beams (for multi-pixel detectors)
     'Ddish':            25.,               # Single dish diameter [m]
-    'Tinst':            50.*(1e3),         # System temp. [mK]
-    'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
+    'Tinst':            70.*(1e3),         # System temp. [mK]
+    'survey_dnutot':    280.,              # Total bandwidth of *entire* survey [MHz]
     'survey_numax':     1260.,             # Max. freq. of survey
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
-    'Sarea':            2e3*(D2RAD)**2.,   # Total survey area [radians^2]
+    'Sarea':            2.9e3*(D2RAD)**2.,   # Total survey area [radians^2]
+    'ttot':             2*365*24*HRS_MHZ,      # Total integration time [MHz^-1]
     }
-BINGO.update(SURVEY)
+BINGO.update(SURVEY_no_ttot)
 
 BAOBAB32 = {
     'mode':             'interferom',      # Interferometer or single dish
@@ -485,9 +493,9 @@ FAST = {
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            20.*(1e3),         # System temp. [mK]
     'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
-    'survey_numax':     1350.,             # Max. freq. of survey ## zmin = 0.05
+    'survey_numax':     1150.,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
-    'Sarea':            20e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'Sarea':            5e3*(D2RAD)**2.,  # Total survey area [radians^2]
     }
 FAST.update(SURVEY_FAST)
 

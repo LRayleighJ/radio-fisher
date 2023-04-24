@@ -36,9 +36,11 @@ print(Sarea_list)
 print(ttot_list)
 
 
-survey_name="FASThighz_hrx_opt"
+survey_name="FAST_hrx_opt"
 
-names = [survey_name+"_%d"%(sa,) for sa in Sarea_list]
+# names = [survey_name+"_%d"%(sa,) for sa in Sarea_list]
+
+names = [survey_name]
 
 
 # Get f_bao(k) function
@@ -48,7 +50,7 @@ fbao = cosmo['fbao']
 
 for k in range(len(names)):
     print(names[k])
-    title = "FAST 1000-1150MHz %d deg2, drift scan for 2 times"%(Sarea_list[k],)
+    title = "FAST"#"FAST 1000-1150MHz %d deg2, drift scan for 2 times"%(Sarea_list[k],)
     root = "output/" + names[k]
 
     # Load cosmo fns.
@@ -98,7 +100,7 @@ for k in range(len(names)):
     plt.savefig("test_%s_pk.pdf"%(names[k]))
     plt.close()
 
-
+'''
 # comparation
 
 compare_name_list = ["FASThighz_hrx_opt_5000","MeerKATb1_hrx_opt","MeerKATb2_hrx_opt"]
@@ -158,3 +160,4 @@ plt.savefig("test_compare_pk.pdf")
 plt.close()
 
 
+'''

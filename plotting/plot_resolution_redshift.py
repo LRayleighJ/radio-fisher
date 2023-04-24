@@ -32,7 +32,7 @@ Ddish_meerkat=13.5
 Dmin = 15.
 Dmax = 1000.
 dnutot = 600. / 1420. # Dimensionless
-Sarea = 20e3 * (D2RAD)**2.
+Sarea = 5e3 * (D2RAD)**2.
 Sarea_meerkat = 4e3 * (D2RAD)**2.
 
 
