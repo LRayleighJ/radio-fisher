@@ -15,30 +15,31 @@ cosmo = rf.experiments.cosmo
 gen_data = False
 
 
-expt_id = 98
+expt_id = 96
 
 D = 300 # meters
 tpix = 24 #seconds
 Sarea_list = np.array([100,200,500,1000,2000,5000,10000,20000])
 ttot_list = 2*Sarea_list*tpix/(1*0.21/D*180/np.pi)**2/(3600)
+lbladd_list = [1,2,3,4,5,6]
+times_list = [1,2,3,5,10,20]
 
 print(Sarea_list)
 print(ttot_list)
 
 if gen_data:
     for i in range(len(Sarea_list)):
-        commandir = "python /home/zerui603/work/bao21cm-master/full_expt_origin.py %d %.2f %.2f"%(expt_id, Sarea_list[i],ttot_list[i])
+        commandir = "python /home/zerui603/work/bao21cm-master/full_expt_origin.py %d %.2f %.2f"%(expt_id, Sarea_list[i],ttot_list[i],)
         os.system(commandir)
 
 print(Sarea_list)
 print(ttot_list)
 
 
-survey_name="FASThighzshift_hrx_opt"
+survey_name="FASThighz_hrx_opt"
 
-names = [survey_name+"_%d"%(sarea,) for sarea in Sarea_list]
-names.append("MeerKATb1_hrx_opt")
-names.append("MeerKATb2_hrx_opt")
+names = [survey_name+"_%d"%(sa,) for sa in Sarea_list]
+
 
 # Get f_bao(k) function
 cosmo_fns = rf.background_evolution_splines(cosmo)
@@ -46,6 +47,8 @@ cosmo = rf.load_power_spectrum(cosmo, "cache_pk.dat", force_load=True)
 fbao = cosmo['fbao']
 
 for k in range(len(names)):
+    print(names[k])
+    title = "FAST 1000-1150MHz %d deg2, drift scan for 2 times"%(Sarea_list[k],)
     root = "output/" + names[k]
 
     # Load cosmo fns.
@@ -91,6 +94,7 @@ for k in range(len(names)):
     plt.ylim((-0.13, 0.13))
     plt.xlabel(r"$k \,[\mathrm{Mpc}^{-1}]$")
     plt.ylabel(r"$P(k)$")
+    plt.title(title)
     plt.savefig("test_%s_pk.pdf"%(names[k]))
     plt.close()
 

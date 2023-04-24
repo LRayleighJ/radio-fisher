@@ -157,6 +157,7 @@ expt_list = [
 names, expts = zip(*expt_list)
 names = list(names); expts = list(expts)
 
+
 ################################################################################
 
 # Take command-line argument for which survey to calculate, or set manually
@@ -206,6 +207,12 @@ if len(sys.argv) > 2:
     except:
         ttot = None
         pass
+
+try:
+    label_add = sys.argv[4]
+    root = root + "_"+label_add
+except:
+    pass
 
 # Define redshift bins
 expt_zbins = rf.overlapping_expts(expt)
