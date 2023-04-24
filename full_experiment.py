@@ -333,7 +333,9 @@ for i in range(zs.size-1):
     print(">>> %2d working on redshift bin %2d -- z = %3.3f" % (myid, i, zc[i]))
     
     # Calculate effective experimental params. in the case of overlapping expts.
+    print("test sarea: 114", Sarea)
     Sarea_rad = Sarea*(D2RAD)**2. if Sarea is not None else None
+    print("test sarea: 1919", Sarea_rad)
     expt_eff = rf.overlapping_expts(expt, zs[i], zs[i+1], Sarea=Sarea_rad)
     
     # Calculate basic Fisher matrix

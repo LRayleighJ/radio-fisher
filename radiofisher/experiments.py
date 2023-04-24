@@ -54,7 +54,7 @@ SURVEY = {
     'use':              USE                # Which constraints to use/ignore
 }
 SURVEY_FAST = {
-    'ttot':             10*240*24*HRS_MHZ,      # Total integration time [MHz^-1]
+    'ttot':             60*24*HRS_MHZ,      # Total integration time [MHz^-1]
     'nu_line':          1420.406,          # Rest-frame freq. of emission line [MHz]
     'epsilon_fg':       1e-6,              # FG subtraction residual amplitude
     'k_nl0':            0.14,              # Non-linear scale at z=0 (sets kmax)
