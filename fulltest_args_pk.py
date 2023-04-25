@@ -11,6 +11,14 @@ import os
 from radiofisher import euclid
 import matplotlib.pyplot as plt
 from radiofisher.units import *
+from radiofisher import euclid
+
+USE_DETF_PLANCK_PRIOR = True
+# MARGINALISE_CURVATURE = True # Marginalise over Omega_K
+# MARGINALISE_INITIAL_PK = True # Marginalise over n_s, sigma_8
+# MARGINALISE_OMEGAB = True # Marginalise over Omega_baryons
+
+get_w0wa_plot = False
 
 cosmo = rf.experiments.cosmo
 
@@ -32,8 +40,10 @@ times_list = [1,2,3,5,10,20]
 
 # generate according experiments
 
-args_name = "survey_numax"
-args_list = [1350,1300,1250,1200,1150,1100,1050,1000]
+t_unit = 12*24*HRS_MHZ
+
+args_name = 'ttot'
+args_list = np.array([0.1,0.2,0.5,1,2,5,10])*t_unit
 lbl_name_list = list(range(len(args_list)))
 
 
@@ -41,7 +51,7 @@ if gen_data:
     if clean:
         os.system("rm -f /home/zerui603/work/bao21cm-master/output/*.dat")
     for i in range(len(args_list)):
-        commandir = "python /home/zerui603/work/bao21cm-master/full_expt_args.py %d %s %.2f %d"%(expt_id, args_name, args_list[i],lbl_name_list[i],)
+        commandir = "python /home/zerui603/work/bao21cm-master/full_expt_args.py %d %s %.2f %s"%(expt_id, args_name, args_list[i],args_name+str(lbl_name_list[i]),)
         os.system(commandir)
     exit()
 
@@ -52,13 +62,21 @@ survey_name="FAST_hrx_opt"
 
 # names = [survey_name+"_%d"%(sa,) for sa in Sarea_list]
 
-names = [survey_name+"_"+str(x) for x in lbl_name_list]
+names = [survey_name+"_"+args_name+str(x) for x in lbl_name_list]
 
 
 # Get f_bao(k) function
 cosmo_fns = rf.background_evolution_splines(cosmo)
 cosmo = rf.load_power_spectrum(cosmo, "cache_pk.dat", force_load=True)
 fbao = cosmo['fbao']
+
+w0_list = []
+wa_list = []
+nu_list = []
+
+dpk_list = []
+k_list = []
+label_dpk_list = []
 
 for k in range(len(names)):
     print(names[k])
@@ -96,8 +114,6 @@ for k in range(len(names)):
     ydn[np.where(ydn > 1e1)] = 1e1
     
 
-    print(np.mean(fbao(kc)))
-
     kk = np.logspace(-3., 1., 2000)
 
     plt.figure()
@@ -112,6 +128,100 @@ for k in range(len(names)):
     plt.savefig("test_%s_pk.pdf"%(names[k]))
     plt.close()
 
+    dpk_list.append([yup,ydn])
+    k_list.append(kc)
+    label_dpk_list.append(r"ttot = %d day"%(args_list[k]/(24*HRS_MHZ),))
+
+    ## get cosmological parameters such as w0 and wa
+    if get_w0wa_plot:
+        pnames = rf.load_param_names(root+"-fisher-full-0.dat")
+        zfns = ['b_HI',]
+        #excl = ['Tb', 'f', 'aperp', 'apar', 'DA', 'H', 'gamma', 'N_eff', 'pk*', 'fs8', 'bs8']
+        excl = ['Tb', 'f', 'aperp', 'apar', 'DA', 'H', 'N_eff', 'pk*', 'fs8', 'bs8']
+        F, lbls = rf.combined_fisher_matrix( F_list,expand=zfns, names=pnames,exclude=excl )
+        if USE_DETF_PLANCK_PRIOR:
+            # DETF Planck prior
+            # print("*** Using DETF Planck prior ***")
+            l2 = ['n_s', 'w0', 'wa', 'omega_b', 'omegak', 'omegaDE', 'h', 'sigma8']
+            F_detf = euclid.detf_to_rf("DETF_PLANCK_FISHER.txt", cosmo, omegab=False)
+            Fpl, lbls = rf.add_fisher_matrices(F, F_detf, lbls, l2, expand=True)
+        else:
+            # Euclid Planck prior
+            # print("*** Using Euclid (Mukherjee) Planck prior ***")
+            l2 = ['n_s', 'w0', 'wa', 'omega_b', 'omegak', 'omegaDE', 'h']
+            Fe = euclid.planck_prior_full
+            F_eucl = euclid.euclid_to_rf(Fe, cosmo)
+            Fpl, lbls = rf.add_fisher_matrices(F, F_eucl, lbls, l2, expand=True)
+
+        # Get indices of w0, wa
+        pw0 = lbls.index('w0'); pwa = lbls.index('wa'); pA = lbls.index('A')
+        
+        try:
+            # Invert matrix
+            cov_pl = np.linalg.inv(Fpl)
+            # print("1D sigma(w_0) = %3.4f" % np.sqrt(cov_pl[pw0,pw0]))
+            # print("1D sigma(w_a) = %3.4f" % np.sqrt(cov_pl[pwa,pwa]))
+            w0_value = np.sqrt(cov_pl[pw0,pw0])
+            wa_value = np.sqrt(cov_pl[pwa,pwa])
+
+            w0_list.append(w0_value)
+            wa_list.append(wa_value)
+            nu_list.append(args_list[k])
+        except:
+            print("singular matrix at nu_max=%.2fMHz"%(args_list[k],))
+            continue
+
+plt.figure()
+for i in range(len(dpk_list)):
+    plt.plot(k_list[i],dpk_list[i][1]+dpk_list[i][0],label = label_dpk_list[i])
+plt.xlabel(r"k")
+plt.ylabel(r"$\Delta P(k)$")
+plt.xlim((2e-2, 2e-1))
+plt.ylim((0, 0.2))
+plt.xscale('log')
+plt.legend()
+plt.title(survey_name)
+plt.savefig("test_%s_dpk.pdf"%(survey_name,))
+plt.close()
+
+# wiggle
+
+color_edge_list = ["#191970","#4682B4", "#3CB371", "#DAA520", "#FF8C00", "#A0522D", "#B22222"]
+color_fill_list = ["#9370DB","#87CEFA", "#90EE90", "#FFD700", "#F4A460", "#F4A460", "#F08080"]
+
+plt.figure()
+for i in range(len(dpk_list)):
+    plt.plot(k_list[i], fbao(k_list[i])+dpk_list[i][0],color=color_edge_list[i],alpha=0.9)
+    plt.plot(k_list[i], fbao(k_list[i])-dpk_list[i][1],color=color_edge_list[i],alpha=0.9,label = label_dpk_list[i])
+    plt.fill_between(k_list[i], fbao(k_list[i])-dpk_list[i][1], fbao(k_list[i])+dpk_list[i][0],color=color_fill_list[i],alpha=0.2)
+plt.plot(kk, fbao(kk), 'k-', lw=1.8, alpha=0.6)
+plt.xlabel(r"k")
+plt.ylabel(r"$P(k)-P_{smooth}(k)$")
+plt.xlim((2e-2, 3e-1))
+plt.ylim((-0.2, 0.2))
+plt.xscale('log')
+plt.legend()
+plt.title(r"FAST 1050-1350MHz, $Sarea=1000deg^2$")
+plt.savefig("test_%s_pk_merge.pdf"%(survey_name,))
+plt.close()
+
+
+
+'''
+if get_w0wa_plot:
+    plt.figure(figsize=[10,4])
+    plt.subplot(121)
+    plt.plot(args_list, w0_list, marker="x")
+    plt.xlabel(r"$\nu_{max}/MHz$, total bandwidth = 300MHz")
+    plt.ylabel(r"$\omega_0$")
+    plt.subplot(122)
+    plt.plot(args_list, wa_list, marker="x")
+    plt.xlabel(r'$\nu_{max}/MHz$, total bandwidth = 300MHz')
+    plt.ylabel(r"$\omega_a$")
+    plt.suptitle("FAST")
+    plt.savefig("test_numax_w0wa_%s.pdf"%(survey_name,))
+    plt.close()
+'''
 '''
 # comparation
 

@@ -23,7 +23,7 @@ MARGINALISE_OMEGAB = True # Marginalise over Omega_baryons
 
 cosmo = rf.experiments.cosmo
 
-names = ["FAST_hrx_opt"]
+names = ["FAST_hrx_opt_4"]
 labels = ["FAST"]
 
 #names = ["FASTWB20K_hrx_opt","FASTWB_hrx_opt"]#['FASTLB00_hrx_opt','FASTLB05_hrx_opt','FASTLB10_hrx_opt','FASTLB15_hrx_opt','FASTLB20_hrx_opt']

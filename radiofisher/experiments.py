@@ -493,9 +493,9 @@ FAST = {
     'Ddish':            300.,              # Single dish diameter [m]
     'Tinst':            20.*(1e3),         # System temp. [mK]
     'survey_dnutot':    300.,              # Total bandwidth of *entire* survey [MHz]
-    'survey_numax':     1150.,             # Max. freq. of survey ## zmin = 0.05
+    'survey_numax':     1350.,             # Max. freq. of survey ## zmin = 0.05
     'dnu':              0.1,               # Bandwidth of single channel [MHz]
-    'Sarea':            5e3*(D2RAD)**2.,  # Total survey area [radians^2]
+    'Sarea':            1e3*(D2RAD)**2.,  # Total survey area [radians^2]
     }
 FAST.update(SURVEY_FAST)
 
